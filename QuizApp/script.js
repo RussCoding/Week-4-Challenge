@@ -90,7 +90,7 @@ start.addEventListener('click', function(){
     })
 })
 
-
+//shows question and all choices with that question stops game when last question done
 function showQuestion(num)
 {   if (num < 5)
     {
@@ -108,7 +108,7 @@ function showQuestion(num)
         
     }
 }
-
+//shows score after end of game and allows user to enter name
 function showScore(){
     questionContainer.style.display = "none";
     finishedContainer.style.display = "block";
@@ -119,7 +119,7 @@ function showScore(){
     })
 
 }
-
+// Shows all scores by going through whats saved in local storage
 highscores.addEventListener('click', ()=>{
     questionContainer.style.display = "none";
     finishedContainer.style.display = "none";
