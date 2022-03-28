@@ -40,7 +40,7 @@ const option3 = document.querySelector(".option3");
 const option4 = document.querySelector(".option4"); */
 const correctness = document.querySelector(".correctness");
 let currentQuestion = 0;
-let time = 200;
+let time = 100;
 
 start.addEventListener('click', function(){
     startContainer.style.display = "none";
@@ -49,13 +49,12 @@ start.addEventListener('click', function(){
     showQuestion(0);
     //starts timer when start is pressed
     timeLeft.innerText = time;
-    timer = setInterval 
-    (() => 
+    timer = setInterval (() => 
         {
             if (time > 0)
             {
                 time -= 1;
-                time.innerText = time;
+                timeLeft.innerText = time;
             }
             else {
                 clearInterval(timer);
@@ -95,7 +94,9 @@ function showQuestion(num)
     }
     else
     {
+        clearInterval(timer);
         showScore();
+        
     }
 }
 
