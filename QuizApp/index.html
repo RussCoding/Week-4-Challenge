@@ -8,7 +8,44 @@
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <button id="start">Start</button>
+
+    <header>
+    <!-- header with link to highscores and countdown timer -->
+        <div class="header">
+            <a id="high-scores">View Highscores</a>
+            <p class = "time-label">Time: <span class="time-left"></span></p>
+        </div>
+    </header>
+    <!-- make cards for each page type and set display to what doesnt show -->
+    <div class="start-page">
+        <h1>Coding Quiz!</h1>
+        <button id="start">Start</button>
+    </div>
+
+    <div class="question-card">
+        <h2 class="question-head"></h3>
+        <button class="options" id="0"></button>
+        <button class="options" id="1"></button>
+        <button class="options" id="2"></button>
+        <button class="options" id="3"></button>
+        <h4 class="correctness"></h6>        
+    </div>
+
+    <div class="finished-quiz">
+        <h2>Score: <span class="user-score"></span></h2>
+        <p>Enter your initials: <input class="username" type="text"></input></p>
+        <button type="submit" class="submit">Submit</button>
+    </div>
+
+    <div class="highscore-page">
+        <h1>High Scores</h1>
+        <ol class="scores-list">
+            
+        </ol>
+
+    </div>
+
+
     <script src="script.js"></script>
 </body>
 </html>
