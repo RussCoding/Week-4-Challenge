@@ -41,6 +41,12 @@ const option4 = document.querySelector(".option4"); */
 const correctness = document.querySelector(".correctness");
 let currentQuestion = 0;
 let time = 100;
+let score = 0;
+const userScore = document.querySelector(".user-score");
+const userName = document.querySelector(".username");
+const submit = document.querySelector(".submit");
+const scoreList = document.querySelector(".scores-list");
+const scoresPage = document.querySelector(".highscore-page");
 
 start.addEventListener('click', function(){
     startContainer.style.display = "none";
@@ -58,10 +64,12 @@ start.addEventListener('click', function(){
             }
             else {
                 clearInterval(timer);
+                score = time;
                 showScore();
             }
         }, 1000)
 
+    // Adds click event for every option and goes to next question after event
     options.forEach((option) => 
     {
         option.addEventListener('click', ()=>
@@ -95,10 +103,36 @@ function showQuestion(num)
     else
     {
         clearInterval(timer);
+        score = time;
         showScore();
         
     }
 }
+
+function showScore(){
+    questionContainer.style.display = "none";
+    finishedContainer.style.display = "block";
+    userScore.innerText = score;
+    let scoreID = localStorage.length;
+    submit.addEventListener('click', ()=>{
+        localStorage.setItem(scoreID, (userName.value + " : " + score));
+    })
+
+}
+
+highscores.addEventListener('click', ()=>{
+    questionContainer.style.display = "none";
+    finishedContainer.style.display = "none";
+    startContainer.style.display = "none";
+    scoresPage.style.display = "block";
+
+    for (i=0;i<localStorage.length; i++){
+        var listItem = document.createElement("li");
+        listItem.innerHTML = localStorage[i];
+        scoreList.appendChild(listItem);
+    }
+    
+})
 
 /* function startQuiz()
 {
