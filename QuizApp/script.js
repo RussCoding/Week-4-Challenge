@@ -43,6 +43,8 @@ let currentQuestion = 0;
 let time = 200;
 
 start.addEventListener('click', function(){
+    startContainer.style.display = "none";
+    questionContainer.style.display = "block";
     //shows first question
     showQuestion(0);
     //starts timer when start is pressed
@@ -60,6 +62,41 @@ start.addEventListener('click', function(){
                 showScore();
             }
         }, 1000)
+
+    options.forEach((option) => 
+    {
+        option.addEventListener('click', ()=>
+        {
+            if(option.innerText == Questions[currentQuestion].answer)
+            {
+                correctness.innerText = "Correct!";
+                time += 5;
+            }
+            else
+            {
+                correctness.innerText = "Incorrect!";
+                time -= 15;
+            }
+            currentQuestion++;
+            showQuestion(currentQuestion);
+        })
+    })
+})
+
+
+function showQuestion(num)
+{   if (num < 5)
+    {
+        questionText.innerText = Questions[num].question;
+        for (var i = 0; i<4; i++)
+        {
+            options[i].innerText = Questions[num].options[i];
+        }
+    }
+    else
+    {
+        showScore();
+    }
 }
 
 /* function startQuiz()
