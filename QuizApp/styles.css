@@ -9,3 +9,9 @@
 .highscore-page {
     display: none;
 }
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -1,4 +1,4 @@
-var Questions = [
+const Questions = [
     {   
         question: "What does html stand for?",
         options: ["Hypertext Markup Language", "Hypertext Makeup Language", "Hyperr Make Type Language", "Cascading Style Sheets"],
@@ -24,4 +24,42 @@ var Questions = [
         options: ["Take a small break to come back with a fresh mind","Look for the error message and see what is wrong", "Throw your computer across the room","Read over your code to look for typos or logic errors"],
         answer : "Throw your computer across the room"
     }
-]
+];
+
+const timeLeft= document.querySelector(".time-left");
+const questionContainer = document.querySelector(".question-card");
+const start = document.querySelector("#start");
+const highscores = document.querySelector("#high-scores");
+const startContainer = document.querySelector(".start-page");
+const finishedContainer = document.querySelector(".finished-quiz");
+const questionText = document.querySelector(".question-head");
+const option1 = document.querySelector(".option1");
+const option2 = document.querySelector(".option2");
+const option3 = document.querySelector(".option3");
+const option4 = document.querySelector(".option4");
+const correctness = document.querySelector(".correctness");
+
+start.addEventListener('click', startQuiz);
+
+function startQuiz()
+{
+    startContainer.style.display="none";
+    questionContainer.style.display="flex";
+    for (var i = 0; i < Questions.length; i++){
+        while (correctness.value != "Correct!"){
+            questionText.innerText = Questions[i].question;
+            option1.innerText = Questions[i].options[0];
+            option2.innerText = Questions[i].options[1];
+            option3.innerText = Questions[i].options[2];
+            option4.innerText = Questions[i].options[3];
+            option1.addEventListener("click")
+
+        }
+
+    }
+}
+
+function correctCheck(i,option){
+    
+}
+
