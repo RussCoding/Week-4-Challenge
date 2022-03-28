@@ -33,33 +33,67 @@ const highscores = document.querySelector("#high-scores");
 const startContainer = document.querySelector(".start-page");
 const finishedContainer = document.querySelector(".finished-quiz");
 const questionText = document.querySelector(".question-head");
-const option1 = document.querySelector(".option1");
+const options = Array.from(document.querySelectorAll(".options"));
+/* const option1 = document.querySelector(".option1");
 const option2 = document.querySelector(".option2");
 const option3 = document.querySelector(".option3");
-const option4 = document.querySelector(".option4");
+const option4 = document.querySelector(".option4"); */
 const correctness = document.querySelector(".correctness");
+let currentQuestion = 0;
+let time = 200;
 
-start.addEventListener('click', startQuiz);
+start.addEventListener('click', function(){
+    //shows first question
+    showQuestion(0);
+    //starts timer when start is pressed
+    timeLeft.innerText = time;
+    timer = setInterval 
+    (() => 
+        {
+            if (time > 0)
+            {
+                time -= 1;
+                time.innerText = time;
+            }
+            else {
+                clearInterval(timer);
+                showScore();
+            }
+        }, 1000)
+}
 
-function startQuiz()
+/* function startQuiz()
 {
     startContainer.style.display="none";
     questionContainer.style.display="flex";
     for (var i = 0; i < Questions.length; i++){
-        while (correctness.value != "Correct!"){
-            questionText.innerText = Questions[i].question;
-            option1.innerText = Questions[i].options[0];
-            option2.innerText = Questions[i].options[1];
-            option3.innerText = Questions[i].options[2];
-            option4.innerText = Questions[i].options[3];
-            option1.addEventListener("click")
+        currentQuestion = Questions[i];
+        questionText.innerText = Questions[i].question;
+        option1.innerText = Questions[i].options[0];
+        option2.innerText = Questions[i].options[1];
+        option3.innerText = Questions[i].options[2];
+        option4.innerText = Questions[i].options[3];
+        while (correctness.innerText != "Correct!"){
+            
+            option1.addEventListener("click", correctAnswer);
+            option2.addEventListener("click", correctAnswer);
+            option3.addEventListener("click", correctAnswer);
+            option4.addEventListener("click", correctAnswer);
+
 
         }
 
     }
-}
+} */
 
-function correctCheck(i,option){
-    
+
+
+function correctAnswer(){
+    if (currentQuestion.answer.innerText == this.innerText){
+        correctness.innerText = "Correct!";
+    }
+    else{
+        correctness.innerText = "Incorrect!";
+    }
 }
 
